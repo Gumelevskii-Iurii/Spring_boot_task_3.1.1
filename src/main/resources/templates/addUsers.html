@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+        }
+
+        .row {
+            font-style: italic;
+        }
+
+        .even-row {
+            color: black;
+        }
+
+        .odd-row {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/addUsers}" th:object="${user}">
+
+    <div>
+        <label for="firstname">Name</label>
+        <input type="text" th:field="*{firstName}" id="firstname"/>
+
+        <br/>
+
+        <label for="secondname">Second name</label>
+        <input type="text" th:field="*{secondName}" id="secondname"/>
+
+        <br/>
+
+        <label for="age">Age</label>
+        <input type="text" th:field="*{age}" id="age"/>
+
+        <br/>
+
+        <input type="submit" value="Add">
+    </div>
+
+</form>
+
+</body>
+</html>

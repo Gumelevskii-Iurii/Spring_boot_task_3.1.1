@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+        }
+
+        .row {
+            font-style: italic;
+        }
+
+        .even-row {
+            color: black;
+        }
+
+        .odd-row {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table border="1">
+
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>SecondName</th>
+                <th>Age</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr th:each="user: ${users}">
+                <td th:utext="${user.id}">Id</td>
+                <td th:utext="${user.firstName}">FirstName</td>
+                <td th:utext="${user.secondName}">SecondName</td>
+                <td th:utext="${user.age}">Age</td>
+                <td><a th:href="@{changeUsers/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{deleteUsers/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <p><a href="/addUsers">Add user</a></p>
+
+</div>
+</body>
+</html>
